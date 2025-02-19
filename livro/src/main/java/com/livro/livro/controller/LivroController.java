@@ -2,6 +2,7 @@ package com.livro.livro.controller;
 
 import com.livro.livro.model.Livro;
 import com.livro.livro.repository.ILivroRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/livro")
 public class LivroController {
 
+    @Autowired
     private final ILivroRepository repository;
 
     public LivroController(ILivroRepository repository) {
