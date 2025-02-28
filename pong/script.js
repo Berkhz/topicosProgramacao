@@ -15,6 +15,8 @@ let velocidadeRacket = 8;
 
 let pontos1 = 0;
 let pontos2 = 0;
+let incrementoVelocidade = 0.1;
+let limitePontos = 3;
 
 function setup() {
     createCanvas(600, 400);
@@ -22,7 +24,7 @@ function setup() {
 
 function draw() {
     background(0);
-
+    
     mostrarPlacar();
     
     criarBolinha();
@@ -37,6 +39,8 @@ function draw() {
     
     verificarColisaoRaquete(xRacket1, yRacket1);
     verificarColisaoRaquete(xRacket2, yRacket2);
+
+    verificarVencedor();
 }
 
 function criarBolinha() {
@@ -96,6 +100,8 @@ function verificarColisaoRaquete(x, y) {
         yBolinha - raio < y + alturaRacket
     ) {
         vxBolinha *= -1;
+        vxBolinha += vxBolinha > 0 ? incrementoVelocidade : -incrementoVelocidade;
+        vyBolinha += vyBolinha > 0 ? incrementoVelocidade : -incrementoVelocidade;
     }
 }
 
@@ -104,6 +110,14 @@ function resetBolinha() {
     yBolinha = height / 2;
     vxBolinha = 5 * (random() > 0.5 ? 1 : -1);
     vyBolinha = 5 * (random() > 0.5 ? 1 : -1);
+}
+
+function verificarVencedor() {
+    if (pontos1 >= limitePontos || pontos2 >= limitePontos) {
+        pontos1 = 0;
+        pontos2 = 0;
+        resetBolinha();
+    }
 }
 
 function mostrarPlacar() {
