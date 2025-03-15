@@ -1,4 +1,4 @@
-package com.livro.livro;
+package com.livro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
